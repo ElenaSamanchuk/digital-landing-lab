@@ -21,7 +21,7 @@ export function BlocksSection() {
   };
 
   return (
-    <section className="section-shell py-14 md:py-[100px]" aria-labelledby="blocks-heading">
+    <section className="section-shell section-inset py-14 md:py-[100px]" aria-labelledby="blocks-heading">
       <h2 id="blocks-heading" className="section-title">Чем отличаются блоки сайтов</h2>
 
       <div className="mt-8 grid gap-8 md:mt-[83px] md:grid-cols-3 md:gap-5">
@@ -56,7 +56,7 @@ export function BlocksSection() {
           Как могут быть реализованы игровые механики
         </h2>
 
-        <div className="mt-8 grid gap-6 md:mt-12 xl:grid-cols-[minmax(0,870px)_minmax(0,1fr)] xl:items-start xl:gap-10">
+        <div className="mt-8 grid gap-6 md:mt-12 lg:grid-cols-[minmax(0,870px)_minmax(0,1fr)] lg:items-start lg:gap-10">
           <div className="overflow-hidden rounded-card">
             <img
               src={resolvePublicPath(slide.image)}
@@ -67,25 +67,25 @@ export function BlocksSection() {
             />
           </div>
 
-          <div className="relative xl:min-h-[460px]" aria-live="polite">
+          <div className="relative lg:min-h-[460px]" aria-live="polite">
             <p
               aria-hidden
-              className="pointer-events-none absolute right-0 top-[280px] hidden font-display text-[125px] leading-[1.35] tracking-[-2.5px] text-accent xl:block"
+              className="pointer-events-none absolute right-0 top-[280px] hidden font-display text-[125px] leading-[1.35] tracking-[-2.5px] text-accent lg:block"
             >
               <span className="text-accent-soft">{current}</span>/{totalLabel}
             </p>
 
-            <p className="font-display text-base tracking-[-0.32px] text-accent-soft xl:hidden">
+            <p className="font-display text-base tracking-[-0.32px] text-accent-soft lg:hidden">
               <span>{current}</span>/{totalLabel}
             </p>
 
-            <h3 className="mt-3 font-display text-base tracking-[-0.32px] text-ink xl:mt-0 xl:text-lg xl:tracking-[-0.36px]">
+            <h3 className="mt-3 font-display text-base tracking-[-0.32px] text-ink lg:mt-0 lg:text-lg lg:tracking-[-0.36px]">
               {slide.title}
             </h3>
 
-            <LinkPill label="Смотреть на сайте" href={slide.link} className="mt-6 xl:mt-10" />
+            <LinkPill label="Смотреть на сайте" href={slide.link} className="mt-6 lg:mt-10" />
 
-            <div className="mt-8 flex gap-4 xl:absolute xl:bottom-0 xl:mt-0 xl:w-full">
+            <div className="mt-8 flex gap-4 lg:absolute lg:bottom-0 lg:mt-0 lg:w-full">
               <ArrowButton direction="prev" onClick={goPrev} />
               <ArrowButton direction="next" onClick={goNext} />
             </div>

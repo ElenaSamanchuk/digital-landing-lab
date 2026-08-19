@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Duplicate PNG assets in public/assets (webp versions are used in production)
+public/assets/case-*.png
+public/assets/team-*.png
+public/assets/block-*.png
+public/assets/mechanic-*.png

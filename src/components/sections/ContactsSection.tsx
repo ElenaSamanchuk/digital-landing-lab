@@ -5,12 +5,12 @@ export function ContactsSection() {
   return (
     <section id="contacts" className="section-shell py-10 md:pb-24 md:pt-12" aria-labelledby="contacts-heading">
       <div className="overflow-hidden rounded-card bg-surface px-4 py-8 md:px-10 md:py-10">
-        <div className="xl:grid xl:grid-cols-[minmax(0,802px)_minmax(0,430px)] xl:gap-10">
+        <div className="lg:grid lg:grid-cols-[minmax(0,802px)_minmax(0,430px)] lg:gap-10">
           <h2 id="contacts-heading" className="section-title max-w-[802px]">
             Мы можем помочь вам с любым из этапов создания сайта по отдельности
           </h2>
 
-          <div className="mt-8 space-y-10 xl:mt-0">
+          <div className="mt-8 space-y-10 lg:mt-0">
             {contactActions.map((action) => (
               <article key={action.cta}>
                 <p className="font-body text-base leading-[1.35] tracking-[-0.32px]">

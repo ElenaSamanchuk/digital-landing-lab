@@ -7,15 +7,15 @@ export function PricingSection() {
   return (
     <section id="pricing" className="section-shell py-10 md:py-16" aria-labelledby="pricing-heading">
       <div className="overflow-hidden rounded-card bg-surface px-4 py-8 md:px-10 md:py-10">
-        <div className="xl:grid xl:grid-cols-[minmax(0,440px)_minmax(0,1fr)] xl:gap-10">
-          <div className="xl:pt-0">
+        <div className="lg:grid lg:grid-cols-[minmax(0,440px)_minmax(0,1fr)] lg:gap-10">
+          <div className="lg:pt-0">
             <h2 id="pricing-heading" className="section-title">Наши тарифы</h2>
             <p className="mt-4 max-w-md font-body text-lg leading-[1.35] tracking-[-0.36px] text-muted">
               {pricingIntro}
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3 xl:mt-0">
+          <div className="mt-8 grid gap-4 md:grid-cols-3 lg:mt-0">
             {pricingPlans.map((plan) => (
               <article
                 key={plan.name}

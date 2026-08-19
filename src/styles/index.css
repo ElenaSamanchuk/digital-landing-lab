@@ -31,6 +31,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   @supports not (scroll-behavior: smooth) {
@@ -40,7 +41,7 @@
   }
 
   body {
-    @apply bg-page font-body text-ink antialiased;
+    @apply overflow-x-hidden bg-page font-body text-ink antialiased;
   }
 
   :focus-visible {
@@ -50,7 +51,11 @@
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-full max-w-content px-4 md:px-[60px];
+    @apply mx-auto w-full max-w-[1440px] px-5;
+  }
+
+  .section-inset {
+    @apply md:px-[60px];
   }
 
   .section-title {

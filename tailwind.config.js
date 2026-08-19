@@ -22,7 +22,7 @@ export default {
         pill: "60px",
       },
       maxWidth: {
-        content: "1400px",
+        content: "1440px",
       },
     },
   },

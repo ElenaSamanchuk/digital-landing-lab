@@ -89,7 +89,7 @@ function HeroNav() {
 
   return (
     <>
-      <div className="relative z-20 flex items-center justify-between px-4 pt-4 md:px-10 md:pt-0 xl:items-start">
+      <div className="relative z-20 flex items-center justify-between px-4 pt-4 md:px-10 md:pt-0 md:items-start">
         <a
           href="#top"
           className="font-display text-base tracking-[-0.32px] text-accent md:text-[26px] md:tracking-[-0.52px]"
@@ -98,7 +98,7 @@ function HeroNav() {
         </a>
 
         <nav
-          className="hidden items-center gap-6 font-body text-base font-extralight tracking-[-0.32px] text-ink xl:flex xl:gap-10"
+          className="hidden items-center gap-6 font-body text-base font-extralight tracking-[-0.32px] text-ink md:flex md:gap-10"
           aria-label="Основная навигация"
         >
           {site.nav.map((item) => (
@@ -110,7 +110,7 @@ function HeroNav() {
 
         <button
           type="button"
-          className="flex size-10 items-center justify-center xl:hidden"
+          className="flex size-10 items-center justify-center md:hidden"
           aria-expanded={open}
           aria-label={open ? "Закрыть меню" : "Открыть меню"}
           onClick={() => setOpen((value) => !value)}
@@ -121,7 +121,7 @@ function HeroNav() {
 
       {open ? (
         <nav
-          className="relative z-20 mx-4 mt-2 rounded-card bg-page/95 px-4 py-4 backdrop-blur-md xl:hidden"
+          className="relative z-20 mx-4 mt-2 rounded-card bg-page/95 px-4 py-4 backdrop-blur-md md:hidden"
           aria-label="Мобильная навигация"
         >
           <ul className="flex flex-col gap-3">
@@ -145,7 +145,7 @@ function HeroNav() {
 
 export function HeroSection() {
   return (
-    <section id="top" className="section-shell pb-10 pt-2.5 md:pb-16 md:pt-5 xl:pb-20">
+    <section id="top" className="section-shell pb-10 pt-2.5 md:pb-20 md:pt-5">
       <div className="relative mx-auto min-h-[632px] max-w-[300px] overflow-hidden rounded-card md:max-w-none md:min-h-[710px]">
         <HeroBackground />
 
@@ -153,13 +153,13 @@ export function HeroSection() {
           <HeroNav />
 
           <div className="mx-auto flex max-w-[270px] flex-col items-center px-4 pb-8 pt-10 text-center md:max-w-4xl md:px-0 md:pt-16">
-            <h1 className="font-display text-[26px] font-normal leading-[1.2] tracking-[-0.52px] text-ink xl:text-[52px] xl:tracking-[-1.04px]">
-              <span className="block xl:inline">{site.hero.title[0]} </span>
-              <span className="block xl:inline">
-                <span className="xl:hidden">от текста </span>
-                <span className="hidden xl:inline">от текста до верстки</span>
+            <h1 className="font-display text-[26px] font-normal leading-[1.2] tracking-[-0.52px] text-ink md:text-[52px] md:tracking-[-1.04px]">
+              <span className="block md:inline">{site.hero.title[0]} </span>
+              <span className="block md:inline">
+                <span className="md:hidden">от текста </span>
+                <span className="hidden md:inline">{site.hero.title[1]}</span>
               </span>
-              <span className="block xl:hidden">до верстки</span>
+              <span className="block md:hidden">до верстки</span>
             </h1>
             <p className="mt-4 max-w-[236px] font-body text-lg font-light tracking-[-0.36px] text-ink md:mt-6 md:max-w-md md:text-[22px] md:tracking-[-0.44px]">
               {site.hero.subtitle}

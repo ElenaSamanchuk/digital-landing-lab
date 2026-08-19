@@ -70,13 +70,31 @@ function CaseBlockView({ block }: { block: CaseBlock }) {
       );
     case "wide-left":
       return (
-        <div className="grid gap-4 md:grid-cols-[280px_minmax(0,1fr)] md:items-start md:gap-6">
+        <div className="space-y-4 md:space-y-6">
+          {block.title ? (
+            <h3 className="font-display text-lg tracking-[-0.36px] text-ink">{block.title}</h3>
+          ) : null}
+          <CaseImageCard item={block.item} />
+          {block.description ? (
+            <p className="max-w-[650px] font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink">
+              {block.description}
+            </p>
+          ) : null}
+        </div>
+      );
+    case "wide-right":
+      return (
+        <div className="grid gap-4 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] md:items-start md:gap-6">
           <div>
             {block.title ? (
               <h3 className="font-display text-lg tracking-[-0.36px] text-ink">{block.title}</h3>
             ) : null}
             {block.description ? (
-              <p className="mt-3 font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink">
+              <p
+                className={`font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink ${
+                  block.title ? "mt-3" : ""
+                }`}
+              >
                 {block.description}
               </p>
             ) : null}
@@ -84,29 +102,11 @@ function CaseBlockView({ block }: { block: CaseBlock }) {
           <CaseImageCard item={block.item} />
         </div>
       );
-    case "wide-right":
-      return (
-        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-start md:gap-6">
-          <div className="md:order-1">
-            {block.title ? (
-              <h3 className="font-display text-lg tracking-[-0.36px] text-ink">{block.title}</h3>
-            ) : null}
-            {block.description ? (
-              <p className="mt-3 font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink">
-                {block.description}
-              </p>
-            ) : null}
-          </div>
-          <div className="md:order-2">
-            <CaseImageCard item={block.item} />
-          </div>
-        </div>
-      );
     case "pair":
       return (
-        <div className="grid gap-4 md:grid-cols-2 md:gap-5">
+        <div className="grid gap-4 md:grid-cols-[minmax(0,430px)_minmax(0,430px)] md:justify-between md:gap-5">
           {block.items.map((item, index) => (
-            <div key={item.url}>
+            <div key={item.url} className="w-full md:max-w-[430px]">
               <CaseImageCard item={item} />
               {block.descriptions?.[index] ? (
                 <p className="mt-3 font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink">

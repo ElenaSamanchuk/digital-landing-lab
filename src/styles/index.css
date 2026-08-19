@@ -87,7 +87,12 @@
   }
 
   .link-pill {
-    @apply flex items-center justify-between gap-3 rounded-pill bg-surface px-2.5 py-2.5 md:px-3 md:py-2.5;
+    @apply flex items-center justify-between gap-3 rounded-pill bg-surface px-2.5 py-2.5 md:px-3;
+    background-image: linear-gradient(
+      147.93deg,
+      rgba(247, 247, 247, 0.8) 6.92%,
+      rgba(247, 247, 247, 0) 104.01%
+    );
   }
 
   .skip-link {

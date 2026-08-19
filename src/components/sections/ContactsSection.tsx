@@ -1,24 +1,23 @@
 import { contactActions } from "../../content/steps";
 import { assetPath, resolvePublicPath } from "../../qa/assets";
-import { SectionHeading } from "../ui/SectionHeading";
 
 export function ContactsSection() {
   return (
-    <section id="contacts" className="section-shell py-14 md:pb-24 md:pt-12" aria-labelledby="contacts-heading">
+    <section id="contacts" className="section-shell py-10 md:pb-24 md:pt-12" aria-labelledby="contacts-heading">
       <div className="overflow-hidden rounded-card bg-surface px-4 py-8 md:px-10 md:py-10">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]">
-          <SectionHeading id="contacts-heading" title="Мы можем помочь вам с любым из этапов создания сайта по отдельности." />
+        <div className="xl:grid xl:grid-cols-[minmax(0,802px)_minmax(0,430px)] xl:gap-10">
+          <h2 id="contacts-heading" className="section-title max-w-[802px]">
+            Мы можем помочь вам с любым из этапов создания сайта по отдельности
+          </h2>
 
-          <div className="space-y-5">
+          <div className="mt-8 space-y-10 xl:mt-0">
             {contactActions.map((action) => (
               <article key={action.cta}>
-                <p className="font-body text-sm font-normal leading-[1.35] text-muted md:text-base">
-                  <span className="text-accent">/</span> {action.label}
+                <p className="font-body text-base leading-[1.35] tracking-[-0.32px]">
+                  <span className="text-accent">/</span>
+                  <span className="text-muted"> {action.label}</span>
                 </p>
-                <a
-                  href="#brief"
-                  className="link-pill mt-4"
-                >
+                <a href="#brief" className="link-pill mt-5 h-[55px]">
                   <span className="flex items-center gap-2.5">
                     <img
                       src={resolvePublicPath(action.photo)}
@@ -27,13 +26,13 @@ export function ContactsSection() {
                       height={55}
                       loading="lazy"
                       decoding="async"
-                      className="size-[45px] rounded-full object-cover object-top md:size-[55px]"
+                      className="size-[55px] rounded-full object-cover object-top"
                     />
-                    <span className="font-display text-sm tracking-[-0.32px] text-ink md:text-base">
+                    <span className="font-display text-base tracking-[-0.32px] text-ink">
                       {action.cta}
                     </span>
                   </span>
-                  <span className="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-accent md:size-[35px]">
+                  <span className="flex size-[35px] shrink-0 items-center justify-center rounded-full bg-accent">
                     <img
                       src={assetPath("icon-cursor.png")}
                       alt=""
@@ -53,7 +52,7 @@ export function ContactsSection() {
         <p className="font-display text-lg text-on-accent md:text-xl">
           Готовы обсудить проект?
         </p>
-        <p className="mt-2 font-body text-sm font-extralight text-on-accent/90 md:text-base">
+        <p className="mt-2 font-body text-base font-extralight text-on-accent/90">
           Заполните короткий бриф — мы свяжемся с вами и предложим оптимальный тариф.
         </p>
       </div>

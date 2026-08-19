@@ -42,7 +42,6 @@ export const workSteps: WorkStep[] = [
 
 export type ContactAction = {
   label: string;
-  description: string;
   photo: string;
   cta: string;
 };
@@ -52,18 +51,15 @@ export const contactActions: ContactAction[] = [
     label: "Разработать структуру сайта и прописать текст",
     photo: "/assets/team-maria.webp",
     cta: "Обратиться к копирайтеру",
-    description: "",
   },
   {
     label: "Продумать дизайн и сделать адаптивные версии",
     photo: "/assets/team-olga.webp",
     cta: "Обратиться к дизайнеру",
-    description: "",
   },
   {
     label: "Собрать сайт по вашему контенту на Tilda",
-    photo: "/assets/team-alex.webp",
+    photo: "/assets/team-elena.webp",
     cta: "Обратиться к верстальщику",
-    description: "",
   },
 ];

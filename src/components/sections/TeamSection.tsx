@@ -1,4 +1,5 @@
 import { teamMembers } from "../../content/team";
+import { resolvePublicPath } from "../../qa/assets";
 import { KickerTitle } from "../ui/KickerTitle";
 import { SectionHeading } from "../ui/SectionHeading";
 
@@ -15,7 +16,7 @@ export function TeamSection() {
           >
             <div className="flex items-center gap-4">
               <img
-                src={member.photo}
+                src={resolvePublicPath(member.photo)}
                 alt={`${member.role} ${member.name}`}
                 width={70}
                 height={70}

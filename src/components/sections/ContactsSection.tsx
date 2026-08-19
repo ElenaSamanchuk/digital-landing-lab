@@ -1,5 +1,5 @@
 import { contactActions } from "../../content/steps";
-import { assetPath } from "../../qa/assets";
+import { assetPath, resolvePublicPath } from "../../qa/assets";
 import { SectionHeading } from "../ui/SectionHeading";
 
 export function ContactsSection() {
@@ -21,7 +21,7 @@ export function ContactsSection() {
                 >
                   <span className="flex items-center gap-2.5">
                     <img
-                      src={action.photo}
+                      src={resolvePublicPath(action.photo)}
                       alt={action.cta}
                       width={55}
                       height={55}

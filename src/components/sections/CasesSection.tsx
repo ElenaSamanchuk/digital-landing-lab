@@ -1,4 +1,5 @@
 import { cases } from "../../content/cases";
+import { resolvePublicPath } from "../../qa/assets";
 import { LinkPill } from "../ui/LinkPill";
 import { SectionHeading } from "../ui/SectionHeading";
 
@@ -64,7 +65,7 @@ export function CasesSection() {
                 }`}
               >
                 <img
-                  src={item.image}
+                  src={resolvePublicPath(item.image)}
                   alt={item.title || item.tag || item.category || "Кейс"}
                   loading="lazy"
                   decoding="async"

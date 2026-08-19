@@ -1,4 +1,5 @@
 import { blockTypes } from "../../content/blocks";
+import { resolvePublicPath } from "../../qa/assets";
 import { KickerTitle } from "../ui/KickerTitle";
 import { SectionHeading } from "../ui/SectionHeading";
 
@@ -15,7 +16,7 @@ export function BlocksSection() {
             </div>
             <div className="mt-4 overflow-hidden rounded-card">
               <img
-                src={block.image}
+                src={resolvePublicPath(block.image)}
                 alt={block.title}
                 loading="lazy"
                 decoding="async"

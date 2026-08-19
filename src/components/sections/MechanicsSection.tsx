@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { mechanicSlides } from "../../content/blocks";
+import { resolvePublicPath } from "../../qa/assets";
 import { ArrowButton } from "../ui/ArrowButton";
 import { LinkPill } from "../ui/LinkPill";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -26,7 +27,7 @@ export function MechanicsSection() {
       <div className="mt-8 grid gap-6 md:mt-12 md:grid-cols-[minmax(0,870px)_minmax(0,1fr)] md:items-start md:gap-10">
         <div className="overflow-hidden rounded-card">
           <img
-            src={slide.image}
+            src={resolvePublicPath(slide.image)}
             alt={slide.title}
             loading="lazy"
             decoding="async"

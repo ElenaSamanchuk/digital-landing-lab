@@ -22,7 +22,7 @@ export function TeamSection() {
                 height={70}
                 loading="lazy"
                 decoding="async"
-                className="size-[70px] rounded-card object-cover object-bottom"
+                className="size-[70px] rounded-card object-cover object-top"
               />
               <div>
                 <p className="font-display text-base tracking-[-0.32px] text-ink">

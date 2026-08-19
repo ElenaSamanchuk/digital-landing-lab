@@ -67,6 +67,8 @@ export function CasesSection() {
                 <img
                   src={resolvePublicPath(item.image)}
                   alt={item.title || item.tag || item.category || "Кейс"}
+                  width={item.tall ? 430 : 870}
+                  height={item.tall ? 340 : 460}
                   loading="lazy"
                   decoding="async"
                   className="size-full object-cover"

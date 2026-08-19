@@ -35,22 +35,22 @@ export type MechanicSlide = {
 export const mechanicSlides: MechanicSlide[] = [
   {
     title: "Встроенный проигрыватель",
-    image: "/assets/mechanic-player.png",
+    image: "/assets/mechanic-player.webp",
     link: "#",
   },
   {
     title: "Колесо удачи",
-    image: "/assets/mechanic-wheel.png",
+    image: "/assets/mechanic-wheel.webp",
     link: "#",
   },
   {
     title: "Калькулятор стоимости",
-    image: "/assets/mechanic-calc.png",
+    image: "/assets/mechanic-calc.webp",
     link: "#",
   },
   {
     title: "Интерактивный квиз",
-    image: "/assets/mechanic-quiz.png",
+    image: "/assets/mechanic-quiz.webp",
     link: "#",
   },
 ];

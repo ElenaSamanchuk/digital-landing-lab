@@ -1,4 +1,5 @@
 name: Deploy GitHub Pages
+# Pages source must be GitHub Actions (not branch/root) — see README Live section.
 
 on:
   push:

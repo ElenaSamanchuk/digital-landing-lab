@@ -11,7 +11,7 @@ export const teamMembers: TeamMember[] = [
     role: "Копирайтер",
     name: "Мария",
     experience: "3 года опыта работы",
-    photo: "/assets/team-maria.png",
+    photo: "/assets/team-maria.webp",
     skills: [
       "UI/UX-копирайтинг",
       "SEO-копирайтинг",
@@ -31,7 +31,7 @@ export const teamMembers: TeamMember[] = [
     role: "Веб-дизайнер",
     name: "Ольга",
     experience: "4 года опыта работы",
-    photo: "/assets/team-olga.png",
+    photo: "/assets/team-olga.webp",
     skills: [
       "UI/UX-дизайн",
       "Адаптивная верстка",
@@ -47,7 +47,7 @@ export const teamMembers: TeamMember[] = [
     role: "Верстальщик",
     name: "Александр",
     experience: "5 лет опыта работы",
-    photo: "/assets/team-alex.png",
+    photo: "/assets/team-alex.webp",
     skills: [
       "HTML/CSS",
       "JavaScript",

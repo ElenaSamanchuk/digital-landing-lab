@@ -27,7 +27,7 @@ export function ContactsSection() {
                       height={55}
                       loading="lazy"
                       decoding="async"
-                      className="size-[45px] rounded-full object-cover md:size-[55px]"
+                      className="size-[45px] rounded-full object-cover object-top md:size-[55px]"
                     />
                     <span className="font-display text-sm tracking-[-0.32px] text-ink md:text-base">
                       {action.cta}

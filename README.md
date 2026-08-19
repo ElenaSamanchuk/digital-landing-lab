@@ -66,6 +66,8 @@ npm run download-hero   # public/assets/hero/hero-desktop.mp4 + hero-mobile.mp4
 
 **https://ElenaSamanchuk.github.io/digital-landing-lab/**
 
+Деплой: workflow `.github/workflows/deploy-pages.yml` (`npm run build:pages` → `dist/`). В **Settings → Pages** источник должен быть **GitHub Actions**, не «Deploy from branch / main / (root)» — иначе на сайте остаётся сырой `index.html` с `/src/main.tsx` и страница пустая.
+
 ## Команды
 
 ```bash

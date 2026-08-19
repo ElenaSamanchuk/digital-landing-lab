@@ -50,19 +50,19 @@ export type ContactAction = {
 export const contactActions: ContactAction[] = [
   {
     label: "Разработать структуру сайта и прописать текст",
-    photo: "/assets/team-maria.png",
+    photo: "/assets/team-maria.webp",
     cta: "Обратиться к копирайтеру",
     description: "",
   },
   {
     label: "Продумать дизайн и сделать адаптивные версии",
-    photo: "/assets/team-olga.png",
+    photo: "/assets/team-olga.webp",
     cta: "Обратиться к дизайнеру",
     description: "",
   },
   {
     label: "Собрать сайт по вашему контенту на Tilda",
-    photo: "/assets/team-alex.png",
+    photo: "/assets/team-alex.webp",
     cta: "Обратиться к верстальщику",
     description: "",
   },

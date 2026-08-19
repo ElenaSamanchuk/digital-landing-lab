@@ -4,52 +4,81 @@ import { heroAssetPath } from "../../qa/assets";
 import { KickerTitle } from "../ui/KickerTitle";
 import { PrimaryButton } from "../ui/PrimaryButton";
 
+function HeroVideoLayer({
+  variant,
+  playing,
+  failed,
+  onPlaying,
+  onError,
+}: {
+  variant: "desktop" | "mobile";
+  playing: boolean;
+  failed: boolean;
+  onPlaying: () => void;
+  onError: () => void;
+}) {
+  const isDesktop = variant === "desktop";
+  const poster = isDesktop ? "poster-desktop.webp" : "poster-mobile.webp";
+  const video = isDesktop ? "hero-desktop.mp4" : "hero-mobile.mp4";
+  const showPoster = !playing && !failed;
+
+  return (
+    <>
+      {showPoster ? (
+        <img
+          src={heroAssetPath(poster)}
+          alt=""
+          width={isDesktop ? 1400 : 750}
+          height={isDesktop ? 710 : 1334}
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : null}
+      {!failed ? (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onPlaying={onPlaying}
+          onError={onError}
+        >
+          <source src={heroAssetPath(video)} type="video/mp4" />
+        </video>
+      ) : null}
+    </>
+  );
+}
+
 function HeroBackground() {
+  const [desktopPlaying, setDesktopPlaying] = useState(false);
+  const [mobilePlaying, setMobilePlaying] = useState(false);
   const [desktopFailed, setDesktopFailed] = useState(false);
   const [mobileFailed, setMobileFailed] = useState(false);
 
   return (
-    <div className="pointer-events-none absolute inset-0" aria-hidden>
-      <div className="absolute inset-0 hidden md:block">
-        <img
-          src={heroAssetPath("poster-desktop.png")}
-          alt=""
-          className="h-full w-full object-cover"
+    <div className="pointer-events-none absolute inset-0 overflow-hidden bg-page" aria-hidden>
+      <div className="hero-bg-layer hero-bg-desktop">
+        <HeroVideoLayer
+          variant="desktop"
+          playing={desktopPlaying}
+          failed={desktopFailed}
+          onPlaying={() => setDesktopPlaying(true)}
+          onError={() => setDesktopFailed(true)}
         />
-        {!desktopFailed && (
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={heroAssetPath("poster-desktop.png")}
-            onError={() => setDesktopFailed(true)}
-          >
-            <source src={heroAssetPath("hero-desktop.mp4")} type="video/mp4" />
-          </video>
-        )}
       </div>
 
-      <div className="absolute inset-0 md:hidden">
-        <img
-          src={heroAssetPath("poster-mobile.png")}
-          alt=""
-          className="h-full w-full object-cover"
+      <div className="hero-bg-layer hero-bg-mobile">
+        <HeroVideoLayer
+          variant="mobile"
+          playing={mobilePlaying}
+          failed={mobileFailed}
+          onPlaying={() => setMobilePlaying(true)}
+          onError={() => setMobileFailed(true)}
         />
-        {!mobileFailed && (
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={heroAssetPath("poster-mobile.png")}
-            onError={() => setMobileFailed(true)}
-          >
-            <source src={heroAssetPath("hero-mobile.mp4")} type="video/mp4" />
-          </video>
-        )}
       </div>
     </div>
   );
@@ -58,7 +87,7 @@ function HeroBackground() {
 export function HeroSection() {
   return (
     <section id="top" className="section-shell pb-16 pt-6 md:pb-24 md:pt-8">
-      <div className="relative overflow-hidden rounded-card">
+      <div className="relative min-h-[520px] overflow-hidden rounded-card md:min-h-[710px]">
         <HeroBackground />
 
         <div className="relative z-10 px-4 py-12 md:px-10 md:py-20">

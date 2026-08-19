@@ -18,7 +18,7 @@ export function TeamSection() {
           {"Специалисты\nDigital Landing Lab"}
         </h2>
 
-        <div className="-mx-5 mt-14 flex gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] lg:mx-0 lg:mt-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
+        <div className="-mx-5 mt-9 flex gap-2.5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] lg:mx-0 lg:mt-0 lg:grid lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
           {teamMembers.map((member) => (
             <article
               key={member.name}
@@ -50,7 +50,9 @@ export function TeamSection() {
                 <KickerTitle>Навыки</KickerTitle>
                 <ul className="mt-[15px] space-y-[3px] font-body text-sm font-extralight leading-[1.25] tracking-[-0.28px] text-ink lg:mt-5 lg:text-base lg:tracking-[-0.32px]">
                   {member.skills.map((skill) => (
-                    <li key={skill} className="whitespace-pre-line">{skill}</li>
+                    <li key={skill} className="whitespace-pre-line">
+                      {skill}
+                    </li>
                   ))}
                 </ul>
               </div>

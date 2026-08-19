@@ -205,7 +205,7 @@ export function HeroSection() {
             </PrimaryButton>
           </div>
 
-          <div className="mx-auto flex max-w-[270px] flex-col gap-2.5 px-[15px] pb-6 md:max-w-none md:grid md:grid-cols-3 md:gap-5 md:px-10 md:pb-8">
+          <div className="mx-auto flex max-w-[270px] flex-col gap-[15px] px-[15px] pb-6 md:max-w-none md:grid md:grid-cols-3 md:gap-5 md:px-10 md:pb-8">
             {heroFeatures.map((feature) => (
               <article
                 key={feature.title}

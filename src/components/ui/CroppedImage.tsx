@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { ImageCrop } from "../../content/imageCrops";
 import { getImageCrop } from "../../content/imageCrops";
 import { resolvePublicPath } from "../../qa/assets";
+import { getResponsiveSrcSet } from "../../qa/imageVariants";
 
 type CroppedImageProps = {
   src: string;
@@ -27,13 +28,24 @@ export function CroppedImage({
   decoding = "async",
 }: CroppedImageProps) {
   const [loaded, setLoaded] = useState(false);
-  const resolved = resolvePublicPath(src);
+  const responsive = getResponsiveSrcSet(src);
+  const resolvedSrcSet = responsive.srcSet
+    ? responsive.srcSet
+        .split(", ")
+        .map((entry) => {
+          const [pathPart, descriptor] = entry.split(" ");
+          return `${resolvePublicPath(pathPart)} ${descriptor}`;
+        })
+        .join(", ")
+    : undefined;
   const cropConfig = crop ?? getImageCrop(src);
   const needsWrapper = Boolean(cropConfig.wrapper);
 
   const img = (
     <img
-      src={resolved}
+      src={resolvePublicPath(responsive.src)}
+      srcSet={resolvedSrcSet}
+      sizes={resolvedSrcSet ? "(max-width: 767px) 430px, 870px" : undefined}
       alt={alt}
       width={width}
       height={height}

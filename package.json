@@ -15,6 +15,7 @@
     "download-hero": "node scripts/download-hero.mjs",
     "generate-hero-posters": "node scripts/generate-hero-posters.mjs",
     "optimize-images": "node scripts/optimize-images.mjs",
+    "optimize-responsive-images": "node scripts/optimize-responsive-images.mjs",
     "check": "tsc -b && node scripts/verify-all-assets.mjs && npm run build && node scripts/verify-local-assets.mjs"
   },
   "dependencies": {

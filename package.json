@@ -1,0 +1,33 @@
+{
+  "name": "digital-landing-lab",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://elenasamanchuk.github.io/digital-landing-lab/",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:pages": "tsc -b && GITHUB_PAGES_BASE=/digital-landing-lab/ vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "download-assets": "node scripts/download-assets.mjs",
+    "download-fonts": "node scripts/download-fonts.mjs",
+    "check": "tsc -b && npm run build && node scripts/verify-local-assets.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "autoprefixer": "^10.5.4",
+    "oxlint": "^1.75.0",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
+}

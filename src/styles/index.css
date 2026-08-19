@@ -1,0 +1,72 @@
+@import "./fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @supports not (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-page font-body text-ink antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-content px-4 md:px-[60px];
+  }
+
+  .section-title {
+    @apply font-display text-[26px] font-normal leading-[1.35] tracking-[-0.52px] text-ink md:text-[30px] md:tracking-[-0.6px];
+  }
+
+  .section-kicker {
+    @apply font-display text-base font-normal tracking-[-0.32px] text-accent md:text-lg md:tracking-[-0.36px];
+  }
+
+  .glass-card {
+    @apply rounded-card;
+    background-image: linear-gradient(
+      124deg,
+      rgba(247, 247, 247, 0.8) 6.92%,
+      rgba(247, 247, 247, 0) 104.01%
+    );
+  }
+
+  @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .glass-card {
+      -webkit-backdrop-filter: blur(7.5px);
+      backdrop-filter: blur(7.5px);
+    }
+
+    .link-pill {
+      -webkit-backdrop-filter: blur(7.5px);
+      backdrop-filter: blur(7.5px);
+    }
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-card bg-accent px-6 py-3 font-display text-sm text-on-accent transition hover:brightness-105 md:h-[55px] md:text-base;
+  }
+
+  .link-pill {
+    @apply flex items-center justify-between gap-3 rounded-pill bg-surface px-2.5 py-2.5 md:px-3 md:py-2.5;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-card focus:bg-accent focus:px-4 focus:py-2 focus:font-display focus:text-sm focus:text-on-accent;
+  }
+}

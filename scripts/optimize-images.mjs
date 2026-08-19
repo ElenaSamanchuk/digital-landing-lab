@@ -7,6 +7,7 @@ import sharp from "sharp";
 
 const assetsDir = path.resolve("public/assets");
 const MIN_BYTES = 200_000;
+const ALWAYS_WEBP_PREFIXES = ["block-", "mechanic-"];
 const SKIP = new Set(["hero"]);
 
 async function walk(dir) {
@@ -34,7 +35,9 @@ const summary = [];
 
 for (const file of files) {
   const { size: before } = await stat(file);
-  if (before < MIN_BYTES) continue;
+  const base = path.basename(file);
+  const forceWebp = ALWAYS_WEBP_PREFIXES.some((prefix) => base.startsWith(prefix));
+  if (before < MIN_BYTES && !forceWebp) continue;
 
   const webpPath = file.replace(/\.png$/i, ".webp");
   await sharp(file).webp({ quality: 80, effort: 6 }).toFile(webpPath);

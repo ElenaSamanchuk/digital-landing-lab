@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { blockTypes, mechanicSlides } from "../../content/blocks";
-import { resolvePublicPath } from "../../qa/assets";
 import { ArrowButton } from "../ui/ArrowButton";
+import { CroppedImage } from "../ui/CroppedImage";
 import { KickerTitle } from "../ui/KickerTitle";
 import { LinkPill } from "../ui/LinkPill";
 
@@ -28,13 +28,13 @@ export function BlocksSection() {
         {blockTypes.map((block) => (
           <article key={block.title}>
             <KickerTitle className="text-center md:text-left">{block.title}</KickerTitle>
-            <div className="mt-4 overflow-hidden rounded-card">
-              <img
-                src={resolvePublicPath(block.image)}
+            <div className="relative mt-4 aspect-[426/300] overflow-hidden rounded-card">
+              <CroppedImage
+                src={block.image}
                 alt={block.title}
+                width={426}
+                height={300}
                 loading="lazy"
-                decoding="async"
-                className="aspect-[426/300] w-full object-cover"
               />
             </div>
             <div className="mt-5 space-y-4 font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink">
@@ -57,13 +57,13 @@ export function BlocksSection() {
         </h2>
 
         <div className="mt-8 grid gap-6 md:mt-12 lg:grid-cols-[minmax(0,870px)_minmax(0,1fr)] lg:items-start lg:gap-10">
-          <div className="overflow-hidden rounded-card">
-            <img
-              src={resolvePublicPath(slide.image)}
+          <div className="relative aspect-[870/460] overflow-hidden rounded-card">
+            <CroppedImage
+              src={slide.image}
               alt={slide.title}
+              width={870}
+              height={460}
               loading="lazy"
-              decoding="async"
-              className="aspect-[870/460] w-full object-cover"
             />
           </div>
 

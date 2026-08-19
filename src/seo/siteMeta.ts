@@ -6,7 +6,7 @@ export const siteMeta = {
   siteName: "Digital Landing Lab",
   canonical: "https://elenasamanchuk.github.io/digital-landing-lab/",
   themeColor: "#51acfe",
-  ogImage: "/assets/block-zero.png",
+  ogImage: "/assets/block-zero.webp",
 } as const;
 
 export const organizationJsonLd = {

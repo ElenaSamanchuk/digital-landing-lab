@@ -1,6 +1,7 @@
 import type { CaseBlock, CaseItem } from "../../content/cases";
 import { caseBlocks } from "../../content/cases";
-import { resolvePublicPath } from "../../qa/assets";
+import { getImageCrop } from "../../content/imageCrops";
+import { CroppedImage } from "../ui/CroppedImage";
 import { LinkPill } from "../ui/LinkPill";
 
 function CaseTag({ tag, dark = false }: { tag: string; dark?: boolean }) {
@@ -18,6 +19,7 @@ function CaseTag({ tag, dark = false }: { tag: string; dark?: boolean }) {
 
 function CaseImageCard({ item }: { item: CaseItem }) {
   const tall = item.tall ?? false;
+  const crop = getImageCrop(item.image);
 
   return (
     <div
@@ -25,14 +27,13 @@ function CaseImageCard({ item }: { item: CaseItem }) {
         tall ? "aspect-[430/340]" : "aspect-[870/460]"
       }`}
     >
-      <img
-        src={resolvePublicPath(item.image)}
+      <CroppedImage
+        src={item.image}
         alt={item.tag || item.url}
         width={tall ? 430 : 870}
         height={tall ? 340 : 460}
         loading="lazy"
-        decoding="async"
-        className="size-full object-cover"
+        crop={crop}
       />
       {item.tag ? (
         <div className="absolute left-4 top-4">

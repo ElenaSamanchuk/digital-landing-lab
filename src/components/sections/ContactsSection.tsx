@@ -1,5 +1,7 @@
 import { contactActions } from "../../content/steps";
-import { assetPath, resolvePublicPath } from "../../qa/assets";
+import { getImageCrop } from "../../content/imageCrops";
+import { assetPath } from "../../qa/assets";
+import { CroppedImage } from "../ui/CroppedImage";
 
 export function ContactsSection() {
   return (
@@ -19,15 +21,16 @@ export function ContactsSection() {
                 </p>
                 <a href="#brief" className="link-pill mt-5 h-[55px]">
                   <span className="flex items-center gap-2.5">
-                    <img
-                      src={resolvePublicPath(action.photo)}
-                      alt={action.cta}
-                      width={55}
-                      height={55}
-                      loading="lazy"
-                      decoding="async"
-                      className="size-[55px] rounded-full object-cover object-top"
-                    />
+                    <div className="relative size-[55px] shrink-0 overflow-hidden rounded-full">
+                      <CroppedImage
+                        src={action.photo}
+                        alt={action.cta}
+                        width={55}
+                        height={55}
+                        loading="lazy"
+                        crop={getImageCrop(action.photo)}
+                      />
+                    </div>
                     <span className="font-display text-base tracking-[-0.32px] text-ink">
                       {action.cta}
                     </span>

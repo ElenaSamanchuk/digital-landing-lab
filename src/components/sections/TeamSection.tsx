@@ -1,5 +1,6 @@
 import { teamMembers } from "../../content/team";
-import { resolvePublicPath } from "../../qa/assets";
+import { getImageCrop } from "../../content/imageCrops";
+import { CroppedImage } from "../ui/CroppedImage";
 import { KickerTitle } from "../ui/KickerTitle";
 
 export function TeamSection() {
@@ -20,15 +21,16 @@ export function TeamSection() {
               className="min-h-[492px] min-w-[250px] shrink-0 rounded-card bg-surface p-4 lg:min-h-[529px] lg:min-w-0 lg:p-5"
             >
               <div className="flex items-center gap-4">
-                <img
-                  src={resolvePublicPath(member.photo)}
-                  alt={`${member.role} ${member.name}`}
-                  width={70}
-                  height={70}
-                  loading="lazy"
-                  decoding="async"
-                  className="size-[70px] rounded-card object-cover object-top"
-                />
+                <div className="relative size-[70px] shrink-0 overflow-hidden rounded-card">
+                  <CroppedImage
+                    src={member.photo}
+                    alt={`${member.role} ${member.name}`}
+                    width={70}
+                    height={70}
+                    loading="lazy"
+                    crop={getImageCrop(member.photo)}
+                  />
+                </div>
                 <div>
                   <p className="font-display text-base tracking-[-0.32px] text-ink">
                     {member.role}

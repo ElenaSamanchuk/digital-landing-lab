@@ -21,7 +21,7 @@ export function BlocksSection() {
   };
 
   return (
-    <section className="section-shell section-inset py-14 md:py-[100px]" aria-labelledby="blocks-heading">
+    <section className="section-shell section-inset section-deferred py-14 md:py-[100px]" aria-labelledby="blocks-heading">
       <h2 id="blocks-heading" className="section-title">Чем отличаются блоки сайтов</h2>
 
       <div className="mt-8 grid gap-8 md:mt-[83px] md:grid-cols-3 md:gap-5">
@@ -57,7 +57,7 @@ export function BlocksSection() {
         </h2>
 
         <div className="mt-8 grid gap-6 md:mt-12 lg:grid-cols-[minmax(0,870px)_minmax(0,1fr)] lg:items-start lg:gap-10">
-          <div className="relative aspect-[870/460] overflow-hidden rounded-card">
+          <div className="relative aspect-[870/460] overflow-hidden rounded-card bg-surface">
             <CroppedImage
               src={slide.image}
               alt={slide.title}
@@ -85,7 +85,7 @@ export function BlocksSection() {
 
             <LinkPill label="Смотреть на сайте" href={slide.link} className="mt-6 lg:mt-10" />
 
-            <div className="mt-8 flex gap-4 lg:absolute lg:bottom-0 lg:mt-0 lg:w-full">
+            <div className="mt-8 flex gap-4 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:mt-0">
               <ArrowButton direction="prev" onClick={goPrev} />
               <ArrowButton direction="next" onClick={goNext} />
             </div>

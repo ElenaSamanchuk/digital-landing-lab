@@ -9,8 +9,8 @@ type ArrowButtonProps = {
 export function ArrowButton({ direction, onClick, className = "" }: ArrowButtonProps) {
   const icon =
     direction === "prev"
-      ? assetPath("icon-arrow-left.png")
-      : assetPath("icon-arrow-right.png");
+      ? assetPath("icon-arrow-left.svg")
+      : assetPath("icon-arrow-right.svg");
 
   return (
     <button

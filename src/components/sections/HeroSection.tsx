@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { heroFeatures, site } from "../../content/site";
 import { assetPath, heroAssetPath } from "../../qa/assets";
 import { KickerTitle } from "../ui/KickerTitle";
@@ -10,17 +10,37 @@ function HeroVideoLayer({
   failed,
   onPlaying,
   onError,
+  posterReady,
 }: {
   variant: "desktop" | "mobile";
   playing: boolean;
   failed: boolean;
   onPlaying: () => void;
   onError: () => void;
+  posterReady: boolean;
 }) {
   const isDesktop = variant === "desktop";
   const poster = isDesktop ? "poster-desktop.webp" : "poster-mobile.webp";
   const video = isDesktop ? "hero-desktop.mp4" : "hero-mobile.mp4";
   const showPoster = !playing && !failed;
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  useEffect(() => {
+    if (!posterReady || failed) return;
+
+    const startLoading = () => setLoadVideo(true);
+    const idleCallback = globalThis.requestIdleCallback?.(startLoading, { timeout: 2500 });
+    const timeoutId = idleCallback ? undefined : globalThis.setTimeout(startLoading, 2000);
+
+    return () => {
+      if (idleCallback !== undefined) {
+        globalThis.cancelIdleCallback?.(idleCallback);
+      }
+      if (timeoutId !== undefined) {
+        globalThis.clearTimeout(timeoutId);
+      }
+    };
+  }, [posterReady, failed]);
 
   return (
     <>
@@ -35,14 +55,14 @@ function HeroVideoLayer({
           className="absolute inset-0 h-full w-full object-cover"
         />
       ) : null}
-      {!failed ? (
+      {loadVideo && !failed ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           onPlaying={onPlaying}
           onError={onError}
         >
@@ -58,6 +78,14 @@ function HeroBackground() {
   const [mobilePlaying, setMobilePlaying] = useState(false);
   const [desktopFailed, setDesktopFailed] = useState(false);
   const [mobileFailed, setMobileFailed] = useState(false);
+  const [posterReady, setPosterReady] = useState(false);
+
+  useEffect(() => {
+    const mobilePoster = new Image();
+    mobilePoster.src = heroAssetPath("poster-mobile.webp");
+    mobilePoster.onload = () => setPosterReady(true);
+    mobilePoster.onerror = () => setPosterReady(true);
+  }, []);
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden bg-page" aria-hidden>
@@ -66,6 +94,7 @@ function HeroBackground() {
           variant="desktop"
           playing={desktopPlaying}
           failed={desktopFailed}
+          posterReady={posterReady}
           onPlaying={() => setDesktopPlaying(true)}
           onError={() => setDesktopFailed(true)}
         />
@@ -76,6 +105,7 @@ function HeroBackground() {
           variant="mobile"
           playing={mobilePlaying}
           failed={mobileFailed}
+          posterReady={posterReady}
           onPlaying={() => setMobilePlaying(true)}
           onError={() => setMobileFailed(true)}
         />
@@ -89,7 +119,7 @@ function HeroNav() {
 
   return (
     <>
-      <div className="relative z-20 flex items-center justify-between px-4 pt-4 md:px-10 md:pt-0 md:items-start">
+      <div className="relative z-20 flex items-center justify-between px-[15px] pt-[15px] md:px-10 md:pt-5 md:items-start">
         <a
           href="#top"
           className="font-display text-base tracking-[-0.32px] text-accent md:text-[26px] md:tracking-[-0.52px]"
@@ -98,7 +128,7 @@ function HeroNav() {
         </a>
 
         <nav
-          className="hidden items-center gap-6 font-body text-base font-extralight tracking-[-0.32px] text-ink md:flex md:gap-10"
+          className="hidden items-center gap-10 font-body text-base font-extralight tracking-[-0.32px] text-ink md:flex"
           aria-label="Основная навигация"
         >
           {site.nav.map((item) => (
@@ -115,7 +145,13 @@ function HeroNav() {
           aria-label={open ? "Закрыть меню" : "Открыть меню"}
           onClick={() => setOpen((value) => !value)}
         >
-          <img src={assetPath("icon-menu.svg")} alt="" width={24} height={10} className="h-2.5 w-6" />
+          <img
+            src={assetPath("icon-menu.svg")}
+            alt=""
+            width={25}
+            height={12}
+            className="h-2.5 w-[25px]"
+          />
         </button>
       </div>
 
@@ -152,7 +188,7 @@ export function HeroSection() {
         <div className="relative z-10 md:px-10 md:pb-10 md:pt-5">
           <HeroNav />
 
-          <div className="mx-auto flex max-w-[270px] flex-col items-center px-4 pb-8 pt-10 text-center md:max-w-4xl md:px-0 md:pt-16">
+          <div className="mx-auto flex max-w-[270px] flex-col items-center px-[15px] pb-8 pt-[42px] text-center md:max-w-4xl md:px-0 md:pt-16">
             <h1 className="font-display text-[26px] font-normal leading-[1.2] tracking-[-0.52px] text-ink md:text-[52px] md:tracking-[-1.04px]">
               <span className="block md:inline">{site.hero.title[0]} </span>
               <span className="block md:inline">
@@ -161,7 +197,7 @@ export function HeroSection() {
               </span>
               <span className="block md:hidden">до верстки</span>
             </h1>
-            <p className="mt-4 max-w-[236px] font-body text-lg font-light tracking-[-0.36px] text-ink md:mt-6 md:max-w-md md:text-[22px] md:tracking-[-0.44px]">
+            <p className="mt-4 max-w-[236px] font-body text-lg font-light tracking-[-0.36px] text-ink md:mt-6 md:max-w-[420px] md:text-[22px] md:tracking-[-0.44px]">
               {site.hero.subtitle}
             </p>
             <PrimaryButton className="mt-6 h-[45px] min-w-[270px] text-sm md:mt-8 md:h-[55px] md:min-w-[300px] md:text-base">
@@ -169,15 +205,15 @@ export function HeroSection() {
             </PrimaryButton>
           </div>
 
-          <div className="mx-auto flex max-w-[270px] flex-col gap-2.5 px-4 pb-6 md:max-w-none md:grid md:grid-cols-3 md:gap-5 md:px-10 md:pb-8">
+          <div className="mx-auto flex max-w-[270px] flex-col gap-2.5 px-[15px] pb-6 md:max-w-none md:grid md:grid-cols-3 md:gap-5 md:px-10 md:pb-8">
             {heroFeatures.map((feature) => (
               <article
                 key={feature.title}
-                className="glass-card min-h-[95px] px-4 py-5 md:min-h-[125px] md:px-6 md:py-7"
+                className="glass-card min-h-[95px] px-4 py-5 md:min-h-[125px] md:px-6 md:py-[30px]"
               >
-                <div className="flex h-full flex-col items-center justify-center text-center">
+                <div className="flex h-full flex-col items-center justify-center gap-[15px] text-center md:gap-5">
                   <KickerTitle className="text-base md:text-lg">{feature.title}</KickerTitle>
-                  <p className="mt-3 max-w-[160px] font-body text-sm font-extralight leading-[1.25] tracking-[-0.28px] text-ink md:mt-5 md:max-w-xs md:text-base md:tracking-[-0.32px]">
+                  <p className="max-w-[160px] font-body text-sm font-extralight leading-[1.25] tracking-[-0.28px] text-ink md:max-w-none md:text-base md:tracking-[-0.32px]">
                     {feature.description}
                   </p>
                 </div>

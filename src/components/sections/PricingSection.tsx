@@ -5,21 +5,25 @@ import { PrimaryButton } from "../ui/PrimaryButton";
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="section-shell py-10 md:py-16" aria-labelledby="pricing-heading">
+    <section
+      id="pricing"
+      className="section-shell section-deferred py-10 md:py-16"
+      aria-labelledby="pricing-heading"
+    >
       <div className="overflow-hidden rounded-card bg-surface px-4 py-8 md:px-10 md:py-10">
-        <div className="lg:grid lg:grid-cols-[minmax(0,440px)_minmax(0,1fr)] lg:gap-10">
-          <div className="lg:pt-0">
+        <div className="lg:grid lg:grid-cols-[minmax(0,440px)_minmax(0,1fr)] lg:items-start lg:gap-10">
+          <div className="lg:pt-10">
             <h2 id="pricing-heading" className="section-title">Наши тарифы</h2>
             <p className="mt-4 max-w-md font-body text-lg leading-[1.35] tracking-[-0.36px] text-muted">
               {pricingIntro}
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3 lg:mt-0">
+          <div className="mt-8 grid gap-5 md:mt-0 md:grid-cols-3 md:justify-items-center lg:justify-items-end">
             {pricingPlans.map((plan) => (
               <article
                 key={plan.name}
-                className="flex min-h-[683px] flex-col rounded-card bg-page p-5"
+                className="flex min-h-[683px] w-full max-w-[280px] flex-col rounded-card bg-page p-5"
               >
                 <div className="flex items-start justify-between">
                   <KickerTitle>{plan.name}</KickerTitle>
@@ -37,7 +41,13 @@ export function PricingSection() {
 
                 {plan.extras ? (
                   <>
-                    <img src={assetPath("divider.svg")} alt="" className="my-5 w-full" />
+                    <img
+                      src={assetPath("divider.svg")}
+                      alt=""
+                      width={240}
+                      height={1}
+                      className="my-5 w-full"
+                    />
                     <KickerTitle className="text-base">При необходимости:</KickerTitle>
                     <ul className="mt-4 space-y-3.5 font-body text-base font-extralight leading-[1.25] tracking-[-0.32px] text-ink">
                       {plan.extras.map((extra) => (

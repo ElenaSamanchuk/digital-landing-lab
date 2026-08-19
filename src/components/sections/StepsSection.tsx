@@ -3,7 +3,7 @@ import { PrimaryButton } from "../ui/PrimaryButton";
 
 export function StepsSection() {
   return (
-    <section id="steps" className="section-shell section-inset py-14 md:py-[100px]" aria-labelledby="steps-heading">
+    <section id="steps" className="section-shell section-inset section-deferred py-14 md:py-[100px]" aria-labelledby="steps-heading">
       <h2 id="steps-heading" className="section-title text-center">Этапы работы</h2>
 
       <div className="mt-8 grid gap-5 md:mt-12 md:grid-cols-2">

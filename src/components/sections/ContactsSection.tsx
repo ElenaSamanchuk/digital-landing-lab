@@ -5,7 +5,7 @@ import { CroppedImage } from "../ui/CroppedImage";
 
 export function ContactsSection() {
   return (
-    <section id="contacts" className="section-shell py-10 md:pb-24 md:pt-12" aria-labelledby="contacts-heading">
+    <section id="contacts" className="section-shell section-deferred py-10 md:pb-24 md:pt-12" aria-labelledby="contacts-heading">
       <div className="overflow-hidden rounded-card bg-surface px-4 py-8 md:px-10 md:py-10">
         <div className="lg:grid lg:grid-cols-[minmax(0,802px)_minmax(0,430px)] lg:gap-10">
           <h2 id="contacts-heading" className="section-title max-w-[802px]">
@@ -37,7 +37,7 @@ export function ContactsSection() {
                   </span>
                   <span className="flex size-[35px] shrink-0 items-center justify-center rounded-full bg-accent">
                     <img
-                      src={assetPath("icon-cursor.png")}
+                      src={assetPath("icon-cursor.svg")}
                       alt=""
                       width={16}
                       height={16}

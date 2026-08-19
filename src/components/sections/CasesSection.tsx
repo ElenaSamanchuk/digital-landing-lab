@@ -127,7 +127,7 @@ function CaseBlockView({ block }: { block: CaseBlock }) {
 
 export function CasesSection() {
   return (
-    <section id="cases" className="section-shell py-10 md:py-16" aria-labelledby="cases-heading">
+    <section id="cases" className="section-shell section-deferred py-10 md:py-16" aria-labelledby="cases-heading">
       <div className="rounded-card bg-surface px-4 py-10 md:px-10 md:py-16">
         <div className="text-center">
           <h2 id="cases-heading" className="section-title">Сайты под ключ</h2>

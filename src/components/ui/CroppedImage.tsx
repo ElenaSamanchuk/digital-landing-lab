@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { ImageCrop } from "../../content/imageCrops";
 import { getImageCrop } from "../../content/imageCrops";
 import { resolvePublicPath } from "../../qa/assets";
@@ -21,10 +22,11 @@ export function CroppedImage({
   height,
   className = "",
   crop,
-  loading,
+  loading = "lazy",
   fetchPriority,
   decoding = "async",
 }: CroppedImageProps) {
+  const [loaded, setLoaded] = useState(false);
   const resolved = resolvePublicPath(src);
   const cropConfig = crop ?? getImageCrop(src);
   const needsWrapper = Boolean(cropConfig.wrapper);
@@ -38,16 +40,34 @@ export function CroppedImage({
       loading={loading}
       fetchPriority={fetchPriority}
       decoding={decoding}
-      className={`pointer-events-none ${cropConfig.img} ${className}`}
+      onLoad={() => setLoaded(true)}
+      className={`pointer-events-none transition-opacity duration-300 ${
+        loaded ? "opacity-100" : "opacity-0"
+      } ${cropConfig.img} ${className}`}
+    />
+  );
+
+  const placeholder = (
+    <div
+      aria-hidden
+      className={`absolute inset-0 bg-surface transition-opacity duration-300 ${
+        loaded ? "opacity-0" : "opacity-100"
+      }`}
     />
   );
 
   if (!needsWrapper) {
-    return img;
+    return (
+      <div className="relative size-full overflow-hidden bg-surface">
+        {placeholder}
+        {img}
+      </div>
+    );
   }
 
   return (
-    <div className={`relative size-full ${cropConfig.wrapper ?? ""}`}>
+    <div className={`relative size-full bg-surface ${cropConfig.wrapper ?? ""}`}>
+      {placeholder}
       {img}
     </div>
   );

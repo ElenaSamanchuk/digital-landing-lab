@@ -24,9 +24,9 @@ const assets = {
   "mechanic-wheel.png": "https://www.figma.com/api/mcp/asset/c14019c7-3390-4b1a-9c74-a75b07585c86.png",
   "mechanic-calc.png": "https://www.figma.com/api/mcp/asset/6ea8781f-17c9-4dc9-b6cb-282fad55bd8a",
   "mechanic-quiz.png": "https://www.figma.com/api/mcp/asset/ff29af92-ce61-4dc2-8043-466115f5bcd9",
-  "icon-cursor.png": "https://www.figma.com/api/mcp/asset/d31267b3-927c-41fd-a338-d15ff709053c.svg",
-  "icon-arrow-left.png": "https://www.figma.com/api/mcp/asset/e0afd436-8035-455c-8299-127792174897.svg",
-  "icon-arrow-right.png": "https://www.figma.com/api/mcp/asset/23e3051d-54e8-466f-828c-78332b24393c.svg",
+  "icon-cursor.svg": "https://www.figma.com/api/mcp/asset/d31267b3-927c-41fd-a338-d15ff709053c.svg",
+  "icon-arrow-left.svg": "https://www.figma.com/api/mcp/asset/e0afd436-8035-455c-8299-127792174897.svg",
+  "icon-arrow-right.svg": "https://www.figma.com/api/mcp/asset/23e3051d-54e8-466f-828c-78332b24393c.svg",
   "icon-menu.svg": "https://www.figma.com/api/mcp/asset/daccba0d-c4f0-4efe-8254-72e85388dbad.svg",
   "divider.svg": "https://www.figma.com/api/mcp/asset/c516beab-c2b8-439d-bebe-1bdac4a86a68.svg",
 };

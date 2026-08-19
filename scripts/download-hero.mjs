@@ -1,26 +1,30 @@
 /**
- * Hero background assets from Figma file HkCwtTRinN2TpQQDNf37DR.
+ * Hero background video + posters for Digital Landing Lab.
  *
- * The hero layer "image 1" (353:584 desktop, 408:870 mobile) uses a video fill.
- * Figma MCP cannot export embedded video fills directly — download_assets returns
- * a 149-byte PNG stub and export_video rejects nested frames.
+ * Figma MCP cannot export embedded video fills from node 353:584 ("image 1").
+ * Canonical source: ElenaSamanchuk/videohost, branch gh-pages, file bg.mp4
+ *   https://raw.githubusercontent.com/ElenaSamanchuk/videohost/gh-pages/bg.mp4
  *
- * Workaround: use export_video on top-level frames, then download posters via
- * download_assets on the hero Frame 4 nodes (353:583 / 408:869).
- *
- *   Desktop video: export_video node 353:581 → hero-desktop.mp4
- *   Mobile video:  export_video node 408:868 → hero-mobile.mp4
- *   Desktop poster: download_assets node 353:583 → poster-desktop.png
- *   Mobile poster:  download_assets node 408:869 → poster-mobile.png
- *
- * Re-run via Figma MCP when URLs expire; committed files in public/assets/hero/ are canonical.
+ * Posters: export Frame 4 via Figma download_assets (353:583 desktop, 408:869 mobile).
  */
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const outDir = path.resolve("public/assets/hero");
+const videoUrl =
+  "https://raw.githubusercontent.com/ElenaSamanchuk/videohost/gh-pages/bg.mp4";
 
 await mkdir(outDir, { recursive: true });
 
-console.log(`Hero assets live in ${outDir}.`);
-console.log("Refresh via Figma MCP export_video + download_assets (see script header).");
+console.log("Downloading hero video from videohost…");
+const response = await fetch(videoUrl);
+if (!response.ok) {
+  throw new Error(`Failed to download bg.mp4: ${response.status}`);
+}
+
+const buffer = Buffer.from(await response.arrayBuffer());
+await writeFile(path.join(outDir, "hero-desktop.mp4"), buffer);
+await writeFile(path.join(outDir, "hero-mobile.mp4"), buffer);
+
+console.log(`Saved hero-desktop.mp4 and hero-mobile.mp4 (${buffer.length} bytes)`);
+console.log("Posters (poster-desktop.png, poster-mobile.png) — refresh via Figma MCP.");

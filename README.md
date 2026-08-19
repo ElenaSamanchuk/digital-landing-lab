@@ -52,6 +52,20 @@ npm run download-fonts   # public/fonts/ + src/styles/fonts.css
 npm run download-assets  # public/assets/ из Figma MCP
 ```
 
+## Hero video
+
+Фон hero — локальный MP4 из репозитория [videohost](https://github.com/ElenaSamanchuk/videohost) (`gh-pages/bg.mp4`):
+
+```bash
+npm run download-hero   # public/assets/hero/hero-desktop.mp4 + hero-mobile.mp4
+```
+
+Постеры: `poster-desktop.png`, `poster-mobile.png` (из Figma Frame 4).
+
+## Live
+
+**https://ElenaSamanchuk.github.io/digital-landing-lab/**
+
 ## Команды
 
 ```bash

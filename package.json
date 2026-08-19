@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://elenasamanchuk.github.io/digital-landing-lab/",
+  "homepage": "https://ElenaSamanchuk.github.io/digital-landing-lab/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "download-assets": "node scripts/download-assets.mjs",
     "download-fonts": "node scripts/download-fonts.mjs",
+    "download-hero": "node scripts/download-hero.mjs",
     "check": "tsc -b && npm run build && node scripts/verify-local-assets.mjs"
   },
   "dependencies": {
